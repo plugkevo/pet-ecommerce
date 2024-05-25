@@ -1,3 +1,7 @@
+<?php
+  include("connection.php");
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -176,7 +180,7 @@
         </ul>
         <ul class="navbar-nav " style="margin-left: 30%;">
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
+            <a class="nav-link" href="login.php">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="signup.html">SignUp</a>

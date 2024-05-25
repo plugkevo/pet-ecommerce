@@ -1,3 +1,7 @@
+<?php
+  include("connection.php");
+  include("login_code.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -448,7 +452,7 @@ body {
         </div>
       </div>
       <!-- SVG Image End -->
-
+    <form action="login.php" method="POST">
       <!-- Form Start -->
       <div class="tengah">
         <div class="login">
@@ -459,6 +463,7 @@ body {
               type="text"
               autocomplete="on"
               placeholder="Username"
+              name="username"
             />
           </label>
           <label>
@@ -468,13 +473,14 @@ body {
               type="password"
               autocomplete="off"
               placeholder="password"
+              name="password"
             />
             <button class="password-button">show</button>
           </label>
-          <button class="login-button">sign in</button>
+          <button class="login-button" name="submit">sign in</button>
         </div>
       </div>
-
+      </form>
       <!-- Form End -->
 
       <!-- Footer Start  -->

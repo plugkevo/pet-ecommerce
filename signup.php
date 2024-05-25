@@ -1,3 +1,7 @@
+<?php
+  include('connection.php');
+  include('signup_code.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
