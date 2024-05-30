@@ -1,6 +1,8 @@
 <?php
   include('connection.php');
   include('signup_code.php');
+  $response="";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -376,6 +378,17 @@
 <body>
     <!-- SVG Image Start  -->
     <div class="container">
+    <button class="btn btn-success" style="margin-left:40%;">
+          <?php 
+            if($response){
+              echo "$response";
+            }
+            else{
+              echo "$error";
+            }
+
+          ?>
+          </button>
       <div class="ear ear--left"></div>
       <div class="ear ear--right"></div>
       <div class="face">
@@ -449,40 +462,45 @@
       <!-- SVG Image End -->
 
       <!-- Form Start -->
-      <div class="tengah">
-        <div class="login">
-          <label>
-            <div class="fas fa-user"></div>
-            <input
-              class="username"
-              type="text"
-              autocomplete="on"
-              placeholder="Username"
-            />
-          </label>
-          <label>
-            <div class="fas fa-envelope"></div>
-            <input
-              class="email"
-              type="text"
-              autocomplete="on"
-              placeholder="Email"
-            />
-          </label>
-          <label>
-            <div class="fas fa-lock"></div>
-            <input
-              class="password"
-              type="password"
-              autocomplete="off"
-              placeholder="password"
-            />
-            <button class="password-button">show</button>
-          </label>
-          <button class="login-button">sign in</button>
+      <form action="signup.php" method="POST">
+         
+        <div class="tengah">
+          <div class="login">
+            <label>
+              <div class="fas fa-user"></div>
+              <input
+                class="username"
+                name="username"
+                type="text"
+                autocomplete="on"
+                placeholder="Username"
+              />
+            </label>
+            <label>
+              <div class="fas fa-envelope"></div>
+              <input
+                class="email"
+                name="email"
+                type="text"
+                autocomplete="on"
+                placeholder="Email"
+              />
+            </label>
+            <label>
+              <div class="fas fa-lock"></div>
+              <input
+                class="password"
+                name="password"
+                type="password"
+                autocomplete="off"
+                placeholder="password"
+              />
+              <button class="password-button">show</button>
+            </label>
+            <button class="login-button" name="submit">sign in</button>
+          </div>
         </div>
-      </div>
-
+        </form>
       <!-- Form End -->
 
       <!-- Footer Start  -->
