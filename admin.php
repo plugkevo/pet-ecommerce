@@ -116,7 +116,7 @@
                 </div>
                 <div class="card-body">
                     <span><p>Click to update products </p></span>
-                    <a href="update_products_services.html">
+                    <a href="update_products_services.php">
                         <button> <i class="fa fa-edit"></i></button>
                     </a>
                 </div>
@@ -128,7 +128,7 @@
                 </div>
                 <div class="card-body">
                     <span><p>Click to update services </p></span>
-                        <a href="update_products_services.html">
+                        <a href="update_products_services.php">
                         <button> <i class="fa fa-edit"></i></button>
                     </a>
                 </div>
@@ -140,7 +140,7 @@
                 </div>
                 <div class="card-body">
                     <span><p>Click to approve products </p></span>
-                    <a href="approve_products_services.html">
+                    <a href="approve_products_services.php">
                         <button> <i class="fa fa-edit"></i></button>
                     </a>
                 </div>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="card-body   ">
                     <span><p>Click to approve Services </p></span>
-                    <a href="approve_products_services.html">
+                    <a href="approve_products_services.php">
                         <button> <i class="fa fa-edit"></i></button>
                     </a>
                 </div>

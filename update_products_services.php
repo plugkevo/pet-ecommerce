@@ -1,10 +1,16 @@
+<?php
+  include('connection.php');
+ 
+  $sql = "SELECT * FROM products_table";
+  $result=$conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>E-COMMERCE </title>
+  <title>E-COMMERCE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -17,52 +23,46 @@
     crossorigin="anonymous"></script>
 
 
-  <style>
-    body {}
+    <style>
+        body {}
 
-    .navbar {
-      height: 80px;
-      /* Adjust the height as needed */
-      position: sticky;
-      /* Make the navbar sticky */
-      top: 0;
-      /* Stick it to the top of the viewport */
-      z-index: 100;
-      /* Ensure it's above other elements */
-    }
-    .nav {
-      padding-top: 15px;
-      
-      padding-bottom: 15px;
-      
-
-    }
-    .navbar-right {
-      margin-left: 20%;
-
-    }
-    .navbar {
+        .navbar {
+        height: 80px;
+        /* Adjust the height as needed */
+        position: sticky;
+        /* Make the navbar sticky */
+        top: 0;
+        /* Stick it to the top of the viewport */
+        z-index: 100;
+        /* Ensure it's above other elements */
         font-family: 'Times New Roman', Times, serif:
+        }
+        .nav {
+        padding-top: 15px;
+        /* Adjust the top padding as needed to vertically center the content */
+        padding-bottom: 15px;
+        /* Adjust the bottom padding as needed to vertically center the content */
+
+        }
+        .navbar-right {
+            margin-left: 30%;
+
         }
 
         nav {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
         }
-        .container-fluid{
-            margin-top: 30px;
+        .card_header{
+            margin-top: 20px;
         }
-    .input{
-        margin-left: 5%;
-        width: 30%;
-        margin-top: 15px;
-    }
-  </style>
+    </style>
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <div class="container">
+    <div class="container-fluid">
       <a class="navbar-brand" href="#" style="font-size: 30px;">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,43 +94,49 @@
       </div>
     </div>
   </nav>
-
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card-header bg-dark text-white text-center" style="height: 50px; text-align: center;" >
-                    <span class="align-middle" >Add products & Services </span>
-                </div>
+            <div class="col-lg-12 ">
+                <div class="card-header bg-dark text-white text-center"style="height: 50px; margin-top: 20px;" >
+                    <span class="align-middle">Products & Services</span>
+                    <span class="float-end"><a href="add_products_services.php"><button class="btn btn-warning" >Add Product/Service</button>
+                    </a></span>
+                </div>    
             </div>
         </div>
+       
 
-        <div class="input">
-            <label for="type" class="label">Product/service</label>
-                <select name="type" id="type" class="form-select">
-                    <option selected="">Select type.....</option>
-                    <option value="box">Product</option>
-                    <option value="machinery">Service</option>
-                </select>
-        </div>
-        <div class="input">
-            <label for="name" class="label">Product/service name</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter product/sevice name...">
-        </div>
-        <div class="input">
-            <label for="price" class="label">Product/service name</label>
-            <input type="number" class="form-control" name="price" placeholder="Enter product/sevice price">
-        </div>
-        <div class="input">
-          <label for="description" class="label">Product/service description</label>
-          <input type="text" class="form-control" name="price" placeholder="Enter product/sevice description">
-        </div>
-        <div class="input">
-            <label for="price" class="label">Product/service Image</label>
-            <input type="file" class="form-control" name="price" placeholder="">
-        </div>
-        <div class="input">
-            <button class="btn btn-primary float-end">Enter</button>
-        </div>
+        <table class="table table-striped table-hover table-responsive"  >
+            <thead>
+                <tr>
+                    <th scope="col">no.</th>   
+                    <th scope="col">Product/service name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if ($result && $result->num_rows > 0) { ?>
+              <?php while ($fetchrecord = $result->fetch_assoc()) { ?>
+                <tr>
+                    <td><?php echo $fetchrecord['no'] ?></td>
+                    <td><?php echo $fetchrecord['name']?></td>
+                    <td><?php echo $fetchrecord['price']?></td>    
+                    <td><?php echo $fetchrecord['description']?></td>                  
+              
+                    <td>
+                        <a href="edit_products_services.php?id=<?php echo $fetchrecord['no']?>" class="btn btn-primary btn-sm">
+                        <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="process_delete_product.php?id=<?php echo $fetchrecord['no']?>" class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash"></i>   
+                        </a>
+                    </td>
+                </tr>
+                <?php } ?>
+                <?php } ?>
+            </tbody>
+        </table>   
     </div>
 
   

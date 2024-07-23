@@ -1,10 +1,32 @@
+<?php
+  include("connection.php");
+
+  if(isset($_POST["submit"])){
+    $name=$_POST["name"];
+    $price=$_POST["price"];
+    $description=$_POST["description"];
+    $image=$_POST["image"];
+  }
+  $insertData=mysqli_query($conn, "INSERT INTO products_table(name, price, description, image) VALUES ('$name', '$price', '$description', '$image')");
+
+  if($insertData){
+    $response = "data inserted succesfully";
+  }
+  else{
+    $error = "Data not inserted";
+  } 
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>E-COMMERCE</title>
+  <title>E-COMMERCE </title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -32,9 +54,9 @@
     }
     .nav {
       padding-top: 15px;
-      /* Adjust the top padding as needed to vertically center the content */
+      
       padding-bottom: 15px;
-      /* Adjust the bottom padding as needed to vertically center the content */
+      
 
     }
     .navbar-right {
@@ -99,38 +121,36 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-header bg-dark text-white text-center" style="height: 50px; text-align: center;" >
-                    <span class="align-middle" >Edit products & Services </span>
+                    <span class="align-middle" >Add products & Services </span>
                 </div>
             </div>
         </div>
-
-        <div class="input">
-            <label for="type" class="label">Product/service</label>
-                <select name="type" id="type" class="form-select">
-                    <option selected="">Select type.....</option>
-                    <option value="box">Product</option>
-                    <option value="machinery">Service</option>
-                </select>
-        </div>
+      <div class="response">
+        <span class="btn btn-success">
+          <?php echo $response; ?> </span>
+          
+      </div>
+      <form method="POST" action="add_products_services.php">
         <div class="input">
             <label for="name" class="label">Product/service name</label>
             <input type="text" class="form-control" name="name" placeholder="Enter product/sevice name...">
         </div>
         <div class="input">
-            <label for="price" class="label">Product/service name</label>
+            <label for="price" class="label">Product/service price</label>
             <input type="number" class="form-control" name="price" placeholder="Enter product/sevice price">
         </div>
         <div class="input">
           <label for="description" class="label">Product/service description</label>
-          <input type="text" class="form-control" name="price" placeholder="Enter product/sevice description">
+          <input type="text" class="form-control" name="description" placeholder="Enter product/sevice description">
         </div>
         <div class="input">
             <label for="price" class="label">Product/service Image</label>
-            <input type="file" class="form-control" name="price" placeholder="">
+            <input type="file" class="form-control" name="image" placeholder="">
         </div>
         <div class="input">
-            <button class="btn btn-primary float-end">Enter</button>
+            <button class="btn btn-primary float-end" name="submit">Enter</button>
         </div>
+        </form>
     </div>
 
   
