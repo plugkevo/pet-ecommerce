@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,6 +101,8 @@
         transition: transform 0.5s,background 0.5s;
         color: black;
         text-decoration: none;
+        width: 250px;
+        height: 290px;
     }
     .products h6{
         font-weight: 600;
@@ -111,7 +114,7 @@
 
     }
     .products:hover{
-        background: #946e6b;
+        background: #0745FF;
         color: #fff;
         transform: scale(1.05);
     }
@@ -136,130 +139,44 @@
 </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" >
-        <div class="container">
-          <a class="navbar-brand" href="#" style="font-size: 30px;">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse headings" id="navbarNavDropdown">
-            <ul class="navbar-nav" style="margin-left: 30%;">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html" style="font-family: 'Times New Roman', Times, serif;">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="products.html">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="services.html">Services</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="cart.html">Cart</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav navbar-right" >
-                <li class="nav-item" >
-                    <a class="nav-link" href="login.html">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="signup.html">SignUp</a>
-                </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+    <?php include('navbar.php') ?>
     
     <div class="container">
-        <h1 style="text-align: center; padding: 40px; font-size: 40px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Products</h1>
-        <div class="row">
-            <a href="" style="text-decoration: none;">
-                <div class="products">
-                    <img src="images/shampoo2.jpeg" alt="" height="200px" width="200px">
-                    <h6>Dog shampoo</h6>
-                    <p>Enhances fur growth</p>
-                    <p><b>Ksh 999</b></p>
-                    <button class="btn btn-warning">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </a>
-            <a href="" style="text-decoration: none;">
-                <div class="products">
-                    <img src="images/dogfood4.jpeg" alt="" height="200px" width="200px">
-                    <h6>Dog Food</h6>
-                    <p>Contains many nutrients</p>
-                    <p><b>Ksh 2999</b></p>
-                    <button class="btn btn-warning">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </a>
-            <a href="" style="text-decoration: none;">
-                <div class="products">
-                    <img src="images/shampoo1.jpeg" alt="" height="200px" width="200px">
-                    <h6>Dog shampoo</h6>
-                    <p>Enhances fur growth</p>
-                    <p><b>Ksh 999</b></p>
-                    <button class="btn btn-warning">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </a>
-            <a href="" style="text-decoration: none;">
-                <div class="products">
-                    <img src="images/dogfood2.jpeg" alt="" height="200px" width="200px">
-                    <h6>Dog shampoo</h6>
-                    <p>For grown mature dogs</p>
-                    <p><b>Ksh 999</b></p>
-                    <button class="btn btn-warning">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </a>
-            <a href="" style="text-decoration: none;">
-                <div class="products">
-                    <img src="images/shampoo1.jpeg" alt="" height="200px" width="200px">
-                    <h6>Dog shampoo</h6>
-                    <p>Enhances fur growth</p>
-                    <p><b>Ksh 999</b></p>
-                    <button class="btn btn-warning">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </a>
-            <a href="" style="text-decoration: none;">
-                <div class="products">
-                    <img src="images/shampoo3.jpeg" alt="" height="200px" width="200px">
-                    <h6>Dog shampoo</h6>
-                    <p>Enhances fur growth</p>
-                    <p><b>Ksh 999</b></p>
-                    <button class="btn btn-warning">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </a><a href="" style="text-decoration: none;">
-                <div class="products">
-                    <img src="images/shampoo2.jpeg" alt="" height="200px" width="200px">
-                    <h6>Dog shampoo</h6>
-                    <p>Enhances fur growth</p>
-                    <p><b>Ksh 999</b></p>
-                    <button class="btn btn-warning">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </a><a href="" style="text-decoration: none;">
-                <div class="products">
-                    <img src="images/shampoo1.jpeg" alt="" height="200px" width="200px">
-                    <h6>Dog shampoo</h6>
-                    <p>Enhances fur growth</p>
-                    <p><b>Ksh 999</b></p>
-                    <button class="btn btn-warning">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </a>
-        </div>
-      </div>
+  <h1 style="text-align: center; padding: 40px; font-size: 40px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Products</h1>
+  <div class="row">
+    <?php
+      include("connection.php");
+
+      // Query to retrieve data from products_table
+      $query = "SELECT * FROM products_table";
+      $result = $conn->query($query);
+
+      $count = 0;
+      while ($row = $result->fetch_assoc()) {
+        $name = $row["name"];
+        $price = $row["price"];
+        $description = $row["description"];
+        $imagePath = $row["image"];
+
+        // Display data in a div called products
+        echo "<div class='col-md-3'>";
+        echo "<div class='products'>";
+        echo "<img src='$imagePath' alt='$name' width='100' height='100'>";
+        echo "<h2>$name</h2>";
+        echo "<p>Price: $price</p>";
+        echo "<p>Description: $description</p>";
+        echo "<a href=''><button class='btn btn-warning'><i class='fa fa-cart-shopping'></i></button></a>";
+        echo "</div>";
+        echo "</div>";
+
+        $count++;
+        if ($count % 4 == 0) {
+          echo "</div><div class='row'>";
+        }
+      }
+   ?>
+  </div>
+</div>
   
   
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

@@ -1,4 +1,5 @@
 <?php
+$response="";
   include('connection.php');
 
   $queryrecord = mysqli_query($conn, "SELECT* FROM products_table WHERE no='".$_GET['id']."'");
@@ -10,7 +11,10 @@
     $image =$fetchrecord['image'];
   }
 
-  require_once("process_update_products.php");
+?>
+
+<?php
+ include('process_update_products.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,49 +79,19 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <div class="container">
-      <a class="navbar-brand" href="#" style="font-size: 30px;">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse headings" id="navbarNavDropdown">
-        <ul class="navbar-nav" style="margin-left: 30%;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="products.html">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="cart.html">Cart</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav navbar-right">
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signup.html">SignUp</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php include('navbar.php') ?>
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card-header bg-dark text-white text-center" style="height: 50px; text-align: center;" >
+                <div class="card-headgit add .er bg-dark text-white text-center" style="height: 50px; text-align: center;" >
+                <a href="update_products_services.php"><Button class="float-start btn btn-warning">Back</Button></a>
                     <span class="align-middle" >Edit products & Services </span>
+
                 </div>
             </div>
         </div>
-      <form method="POST" action="edit_products_services.php?id=<?php echo $id ?>">
+      <form method="POST" action="edit_products_services.php?id=<?php echo $id ?>" enctype="multipart/form-data">
       <div class="response">
           <span class="btn btn-success"><?php echo $response?></span>
         </div>

@@ -1,25 +1,25 @@
 <?php
+$response="";
   include("connection.php");
 
   if(isset($_POST["submit"])){
-    $name=$_POST["name"];
-    $price=$_POST["price"];
-    $description=$_POST["description"];
-    $image=$_POST["image"];
+    $name = $_POST["name"];
+    $price = $_POST["price"];
+    $description = $_POST["description"];
+    $image = $_FILES['image1']['tmp_name'];
+    $imagePath = 'uploads/' . $_FILES['image1']['name'];
+    move_uploaded_file($image, $imagePath);
+
+    $insertData = $conn->prepare("INSERT INTO products_table(name, price, description, image) VALUES (?, ?, ?, ?)");
+    $insertData->bind_param("ssss", $name, $price, $description, $imagePath);
+
+    if($insertData->execute()){
+      $response = "data inserted succesfully";
+    } else {
+      $error = "Data not inserted";
+    }
   }
-  $insertData=mysqli_query($conn, "INSERT INTO products_table(name, price, description, image) VALUES ('$name', '$price', '$description', '$image')");
-
-  if($insertData){
-    $response = "data inserted succesfully";
-  }
-  else{
-    $error = "Data not inserted";
-  } 
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,39 +83,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <div class="container">
-      <a class="navbar-brand" href="#" style="font-size: 30px;">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse headings" id="navbarNavDropdown">
-        <ul class="navbar-nav" style="margin-left: 30%;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="products.html">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="cart.html">Cart</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav navbar-right">
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signup.html">SignUp</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php include('navbar.php') ?>
 
     <div class="container-fluid">
         <div class="row">
@@ -130,7 +98,7 @@
           <?php echo $response; ?> </span>
           
       </div>
-      <form method="POST" action="add_products_services.php">
+      <form method="POST" action="add_products_services.php" enctype="multipart/form-data">
         <div class="input">
             <label for="name" class="label">Product/service name</label>
             <input type="text" class="form-control" name="name" placeholder="Enter product/sevice name...">
@@ -145,7 +113,7 @@
         </div>
         <div class="input">
             <label for="price" class="label">Product/service Image</label>
-            <input type="file" class="form-control" name="image" placeholder="">
+            <input type="file" class="form-control" name="image1" placeholder="">
         </div>
         <div class="input">
             <button class="btn btn-primary float-end" name="submit">Enter</button>

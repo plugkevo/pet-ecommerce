@@ -54,39 +54,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#" style="font-size: 30px;">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse headings" id="navbarNavDropdown">
-        <ul class="navbar-nav" style="margin-left: 30%;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="products.html">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="cart.html">Cart</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav navbar-right">
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signup.html">SignUp</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php include('navbar.php') ?>
 
   <div class="container-fluid">
     <div class="row">
