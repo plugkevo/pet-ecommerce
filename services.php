@@ -77,6 +77,7 @@
 </style>
 </head>
 <body>
+    <?php include ('connection.php')?>
     <?php include('navbar.php') ?>
     <div class="container">
         <h1 style="text-align: center; padding: 40px; font-size: 40px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Services</h1>

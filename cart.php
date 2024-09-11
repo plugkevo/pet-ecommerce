@@ -1,3 +1,28 @@
+<?php
+
+@include 'connection.php';
+
+if(isset($_POST['update_update_btn'])){
+   $update_value = $_POST['update_quantity'];
+   $update_id = $_POST['update_quantity_id'];
+   $update_quantity_query = mysqli_query($conn, "UPDATE `cart` SET quantity = '$update_value' WHERE id = '$update_id'");
+   if($update_quantity_query){
+      header('location:cart.php');
+   };
+};
+
+if(isset($_GET['remove'])){
+   $remove_id = $_GET['remove'];
+   mysqli_query($conn, "DELETE FROM `cart` WHERE id = '$remove_id'");
+   header('location:cart.php');
+};
+
+if(isset($_GET['delete_all'])){
+   mysqli_query($conn, "DELETE FROM `cart`");
+   header('location:cart.php');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,10 +75,15 @@
     .checkout{
       margin-right: 50px;
     }
+    a{
+      text-decoration: none;
+      color: :red;
+    }
   </style>
 </head>
 
 <body>
+
   <?php include('navbar.php') ?>
 
   <div class="container-fluid">
@@ -67,39 +97,53 @@
     </div>
 
     <table class="table table-striped table-hover table-responsive"  >
-        <thead>
-            <tr>
-                <th scope="col">no.</th>
-                <th scope="col">Type</th>
-                <th scope="col">Product/service name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Remove</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Product</td>
-                <td>Dog Food</td>
-                <td>4999</td>                  
-                <td>
-                    <a href="" class="btn btn-danger btn-sm">
-                    <i class="fa fa-trash"></i>   
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Service</td>
-                <td>Veterinary services</td>
-                <td>3500</td>                  
-                <td>     
-                   <a href="" class="btn btn-danger btn-sm">
-                    <i class="fa fa-trash"></i>       
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+    <thead>
+         <th>image</th>
+         <th>name</th>
+         <th>price</th>
+         <th>quantity</th>
+         <th>total price</th>
+         <th>action</th>
+      </thead>
+
+      <tbody>
+
+         <?php 
+         
+         $select_cart = mysqli_query($conn, "SELECT * FROM `cart`");
+         $grand_total = 0;
+      
+         if(mysqli_num_rows($select_cart) > 0){
+            while($fetch_cart = mysqli_fetch_assoc($select_cart)){
+         ?>
+
+         <tr>
+            <td><img src="uploads/<?php echo $fetch_cart['image']; ?>" height="100" alt=""></td>
+            <td><?php echo $fetch_cart['name']; ?></td>
+            <td>$<?php echo number_format($fetch_cart['price']); ?>/-</td>
+            <td>
+               <form action="" method="post">
+                  <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['id']; ?>" >
+                  <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
+                  <input type="submit" class="btn btn-warning" value="update" name="update_update_btn">
+               </form>   
+            </td>
+            <td>$<?php echo $sub_total = $fetch_cart['price'] * $fetch_cart['quantity'];?>/-</td>
+            <td><a href="cart.php?remove=<?php echo $fetch_cart['id']; ?>" onclick="return confirm('remove item from cart?')" ><button class="btn btn-danger"><i class="fas fa-trash"></i> Remove</button> </a></td>
+         </tr>
+         <?php
+           $grand_total += $sub_total;  
+            };
+         };
+         ?>
+         <tr class="table-bottom">
+            <td><a href="products.php" class="option-btn" style="margin-top: 0;"><button class="btn btn-primary">Continue shopping</button> </a></td>
+            <td colspan="3"><b>Grand total</b></td>
+            <td>$<?php echo $grand_total; ?>/-</td>
+            <td><a href="cart.php?delete_all" onclick="return confirm('are you sure you want to delete all?');"><button class=" btn btn-danger"><i class="fas fa-trash"></i> Delete all</button></a></td>
+         </tr>
+
+      </tbody>
     </table>   
     <div class="checkout">
       <a href="payment.html" class="btn btn-warning float-end">Checkout</a>

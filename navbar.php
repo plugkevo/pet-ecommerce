@@ -16,8 +16,19 @@
           <li class="nav-item">
             <a class="nav-link" href="services.php">Services</a>
           </li>
+
+          <?php
+      
+      $select_rows = mysqli_query($conn, "SELECT * FROM `cart`") or die('query failed');
+      $row_count = mysqli_num_rows($select_rows);
+
+      ?>
           <li class="nav-item dropdown">
-            <a class="nav-link" href="cart.php">Cart</a>
+            <a href="cart.php" class="nav-link">Cart <span style="color: blue; background-color: yellow;"><b><?php echo $row_count; ?></b></span> </a>
+
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="products2.php">products2</a>
           </li>
         </ul>
         <ul class="navbar-nav navbar-right">
