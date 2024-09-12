@@ -1,12 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow mx-auto">
+  
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" style="font-size: 30px;">Navbar</a>
+      <a class="navbar-brand" href="#" style="font-size: 30px;">Pets n Pets</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse headings" id="navbarNavDropdown">
-        <ul class="navbar-nav" style="margin-left: 30%;">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
           </li>
@@ -16,6 +17,7 @@
           <li class="nav-item">
             <a class="nav-link" href="services.php">Services</a>
           </li>
+        
 
           <?php
       
@@ -27,9 +29,7 @@
             <a href="cart.php" class="nav-link">Cart <span style="color: blue; background-color: yellow;"><b><?php echo $row_count; ?></b></span> </a>
 
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="products2.php">products2</a>
-          </li>
+         
         </ul>
         <ul class="navbar-nav navbar-right">
           <li class="nav-item">

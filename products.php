@@ -42,6 +42,7 @@
       top: 0; /* Stick it to the top of the viewport */
       z-index: 100; /* Ensure it's above other elements */
       font-size: 20px;
+      width: 100vw;
     }
     nav{
         padding-top: 15px; /* Adjust the top padding as needed to vertically center the content */
@@ -104,7 +105,7 @@
         font-family: 'poppins', sans-serif;
     }
     .container{
-      max-width: 1200px;
+      
         width: 100vw;
         height: 100vh;
         padding: 0 8px;
